@@ -1,14 +1,12 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const User = require("./user.model");
 const bcrypt = require("bcrypt");
 const app = express.Router();
 const jwt = require("jsonwebtoken");
-
 const SECRET_KEY = process.env.SECRET_KEY;
 
 
-
+// route for user login
 app.post("/login", async (req, res) => {
     const { phoneNumber, email, password } = req.body;
     try {
@@ -63,10 +61,9 @@ app.post("/login", async (req, res) => {
     }
 });
 
-
+// route for user signup
 app.post("/signup", async (req, res) => {
     const { email, name, password, age, gender, role, token } = req.body;
-
     try {
         if (!token) {
             let user = await User.findOne({ email });
@@ -113,5 +110,5 @@ app.post("/signup", async (req, res) => {
         return res.status(404).send(error.message);
     }
 });
-
+// app.get()
 module.exports = app;
