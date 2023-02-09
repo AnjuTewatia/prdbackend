@@ -22,6 +22,7 @@ app.get("", async (req, res) => {
     res.sendFile(__dirname + "/src/utils/index.html");
   } catch (error) {
     res.send(error.message);
+    console.log(error);
   }
 });
 
