@@ -105,10 +105,12 @@ app.get("/allprodAdmin", async (req, res) => {
             let temp = new RegExp(input, "i");
             let product = await Product.find({ title: temp });
             return res.status(200).send(product);
+        } else {
+            let product = await Product.find()
+            return res.status(200).send(product);
         }
     } catch (error) {
         return res.status(400).send(error.message);
-
     }
 
 })
