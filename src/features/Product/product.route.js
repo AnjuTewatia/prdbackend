@@ -89,8 +89,8 @@ app.patch("/:id", async (req, res) => {
 
 app.get("/allprodAdmin", async (req, res) => {
   try {
-    let product = await Product.find();
-    return res.status(200).send(product);
+    // let product = await Product.find();
+    return res.status(200).send("hello");
   } catch (error) {
     return res.status(400).send(error.message);
   }
