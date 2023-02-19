@@ -113,8 +113,16 @@ app.post("/signup", async (req, res) => {
 
 //get all users
 app.get("", async (req, res) => {
-    let user = await User.find()
-    return res.status(200).send(user);
+
+    try {
+        
+        let user = await User.find()
+        return res.status(200).send(user);
+    } catch (error) {
+        
+        return res.status(404).send(error.message);
+
+    }
 })
 
 
