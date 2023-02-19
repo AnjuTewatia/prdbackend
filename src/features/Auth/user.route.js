@@ -110,5 +110,22 @@ app.post("/signup", async (req, res) => {
         return res.status(404).send(error.message);
     }
 });
-// app.get()
+
+//get all users
+app.get("", async (req, res) => {
+
+    try {
+        
+        let user = await User.find()
+        return res.status(200).send(user);
+    } catch (error) {
+        
+        return res.status(404).send(error.message);
+
+    }
+})
+
+
+
+
 module.exports = app;
