@@ -41,6 +41,10 @@ app.get("", async (req, res) => {
         .skip((page - 1) * limit)
         .limit(limit);
       return res.status(200).send(product);
+    } else if (input) {
+      let temp = new RegExp(input, "i");
+      let product = await Product.find({ title: temp }).limit(limit);
+      return res.status(200).send(product);
     } else {
       let product = await Product.find()
         .skip((page - 1) * limit)
